@@ -10,7 +10,12 @@ cd ffmpeg
 emconfigure ./configure --cc="emcc" --enable-cross-compile --target-os=none --arch=x86_32 --cpu=generic --disable-ffplay --disable-ffprobe --disable-ffserver --disable-asm --disable-doc --disable-devices --disable-pthreads --disable-w32threads --disable-network --disable-hwaccels --disable-parsers --disable-bsfs --disable-debug --disable-zlib --disable-protocols --disable-indevs --disable-outdevs --enable-protocol=file --enable-pic --enable-small \
   --disable-demuxers --enable-demuxer=image2,wav \
   --disable-decoders --enable-decoder=pam,pcm_s16le \
-  --disable-encoders --enable-encoder=mpeg1video,h263,mp2,aac,mpeg4
+  --disable-encoders --enable-encoder=mpeg1video,h263,mp2,aac,mpeg4 \
+  --disable-filters  --enable-filter=adelay,aformat,anull,apad,aperms,aresample,aselect,asendcmd,asetnsamples,\
+asetpts,asetrate,asettb,join,anullsrc,anullsink,bbox,copy,crop,field,format,fps,framestep,il,null,pad,perms,scale,select,\
+sendcmd,separatefields,setdar,setfield,setpts,setsar,settb,nullsrc,nullsink,concat,amovie,movie,ffbuffersink,ffabuffersink,\
+abuffer,buffer,abuffersink,buffersink,afifo,fifo \
+  --disable-muxers   --enable-muxer=mpeg1system,mp4,avi
 
 make clean
 make
