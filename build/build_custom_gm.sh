@@ -16,7 +16,7 @@ make clean
 make
 cp ffmpeg ffmpeg.bc
 
-emcc -s OUTLINING_LIMIT=100000 -s TOTAL_MEMORY=33554432 -Os -v ffmpeg.bc -o ../ffmpeg_asm.js --pre-js ../ffmpeg_pre.js --post-js ../ffmpeg_post.js
+emcc -s OUTLINING_LIMIT=100000 -s TOTAL_MEMORY=33554432 -Os --closure 1 -v ffmpeg.bc -o ../ffmpeg_asm.js --pre-js ../ffmpeg_pre.js --post-js ../ffmpeg_post.js
 
 cd ../
 
