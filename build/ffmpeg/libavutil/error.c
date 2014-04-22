@@ -17,6 +17,8 @@
  */
 
 #undef _GNU_SOURCE
+#define _GNU_SOURCE
+
 #include "avutil.h"
 #include "avstring.h"
 #include "common.h"
