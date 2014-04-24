@@ -11,17 +11,15 @@ emconfigure ./configure --cc="emcc" --enable-cross-compile --target-os=none --ar
   --disable-demuxers --enable-demuxer=image2,wav \
   --disable-decoders --enable-decoder=pam,pcm_s16le \
   --disable-encoders --enable-encoder=mpeg1video,h263,mp2,aac,mpeg4 \
-  --disable-filters  --enable-filter=adelay,aformat,anull,apad,aperms,aresample,aselect,asendcmd,asetnsamples,\
-asetpts,asetrate,asettb,join,anullsrc,anullsink,bbox,copy,crop,field,format,fps,framestep,il,null,pad,perms,scale,select,\
-sendcmd,separatefields,setdar,setfield,setpts,setsar,settb,nullsrc,nullsink,concat,amovie,movie,ffbuffersink,ffabuffersink,\
-abuffer,buffer,abuffersink,buffersink,afifo,fifo \
+  --disable-filters  --enable-filter=adelay,apad,aperms,aresample,aselect,asendcmd,asetnsamples,format,perms,\
+scale,select,sendcmd,amovie,movie,ffbuffersink,ffabuffersink,abuffer,buffer,abuffersink,buffersink,afifo,fifo \
   --disable-muxers   --enable-muxer=mpeg1system,mp4,avi
 
 make clean
 make
 cp ffmpeg ffmpeg.bc
 
-emcc -s OUTLINING_LIMIT=100000 -s TOTAL_MEMORY=33554432 -Os --closure 1 -v ffmpeg.bc -o ../ffmpeg-custom.js --pre-js ../ffmpeg_pre.js --post-js ../ffmpeg_post.js
+emcc -s OUTLINING_LIMIT=100000 -s TOTAL_MEMORY=33554432 -O3 --closure 1 -v ffmpeg.bc -o ../ffmpeg-custom.js --pre-js ../ffmpeg_pre.js --post-js ../ffmpeg_post.js
 
 cd ../
 
